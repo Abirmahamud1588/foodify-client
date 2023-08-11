@@ -19,7 +19,7 @@ const ManageItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://foodlify-eta.vercel.app/menu/${item._id}`, {
+        fetch(`https://newrestaurant-ten.vercel.app/menu/${item._id}`, {
           // Corrected URL and method name
           method: "DELETE", // Corrected method name
         })

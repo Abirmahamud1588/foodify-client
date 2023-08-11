@@ -11,7 +11,7 @@ const Users = () => {
     return res.data;
   });
   const handlemakeadmin = (user) => {
-    fetch(`https://foodlify-eta.vercel.app/users/admin/${user._id}`, {
+    fetch(`https://newrestaurant-ten.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

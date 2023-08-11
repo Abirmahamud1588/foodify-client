@@ -22,7 +22,7 @@ const useMenu = () => {
   } = useQuery({
     queryKey: ["menu"],
     queryFn: async () => {
-      const res = await fetch("https://foodlify-eta.vercel.app/menu");
+      const res = await fetch("https://newrestaurant-ten.vercel.app/menu");
       return res.json();
     },
   });

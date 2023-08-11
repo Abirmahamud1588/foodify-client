@@ -46,7 +46,7 @@ const AuthProviders = ({ children }) => {
       // get and set token
       if (currentUser) {
         axios
-          .post("https://foodlify-eta.vercel.app/jwt", {
+          .post("https://newrestaurant-ten.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {

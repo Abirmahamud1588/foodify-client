@@ -19,7 +19,7 @@ const Sign = () => {
       console.log(Loggeduser);
       const userSave = { email: email, name: name };
       updateuserProfile(name, photo).then(() => {
-        fetch("https://foodlify-eta.vercel.app/users", {
+        fetch("https://newrestaurant-ten.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

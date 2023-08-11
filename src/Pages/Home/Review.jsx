@@ -12,7 +12,7 @@ import "@smastrom/react-rating/style.css";
 const Review = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
-    fetch("https://foodlify-eta.vercel.app/reviews")
+    fetch("https://newrestaurant-ten.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);

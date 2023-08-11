@@ -5,7 +5,7 @@ import Menuitem from "../../Shared/Menuitem/Menuitem";
 const Popularmenu = () => {
   const [menu, setMenu] = useState([]);
   useEffect(() => {
-    fetch("https://foodlify-eta.vercel.app/menu")
+    fetch("https://newrestaurant-ten.vercel.app/menu")
       .then((res) => res.json())
       .then((data) => {
         const populatitem = data.filter((item) => item.category === "popular");

@@ -13,7 +13,7 @@ const Card = ({ item }) => {
   const handleAddToCart = (item) => {
     if (user) {
       const cartItem = { menuItem: _id, name, image, price, email: user.email };
-      fetch("https://foodlify-eta.vercel.app/carts", {
+      fetch("https://newrestaurant-ten.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
