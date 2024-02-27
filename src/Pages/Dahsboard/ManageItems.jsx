@@ -19,7 +19,7 @@ const ManageItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://newrestaurant-ten.vercel.app/menu/${item._id}`, {
+        fetch(`http://localhost:5000/menu/${item._id}`, {
           // Corrected URL and method name
           method: "DELETE", // Corrected method name
         })
@@ -35,13 +35,13 @@ const ManageItems = () => {
     });
   };
   return (
-    <div className="w-full">
+    <div className="w-3/4 mx-auto mt-20 ">
       <Sectiontitle
         heading="Manage All Items"
         subheading="Hurry up"
       ></Sectiontitle>
       <div className="overflow-x-auto w-full">
-        <table className="table w-full">
+        <table className="table w-full mt-6">
           {/* head */}
           <thead>
             <tr>

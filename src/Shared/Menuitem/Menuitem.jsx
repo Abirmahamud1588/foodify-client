@@ -1,20 +1,28 @@
-import React from 'react';
+import React from "react";
 
-const Menuitem = ({item}) => {
-    const {image,price,name,recipe} = item;
-    return (
+const Menuitem = ({ item }) => {
+  const { image, price, name, des, category } = item;
+  return (
+    <div>
+      <div className=" space-x-4 mb-5 items-center">
         <div>
-        <div className='flex space-x-4 mb-5'>
-            <img style={{borderRadius:'0px 200px 200px 200px'}} className='w-[120px]' src={image} alt="" />
-            <div>
-                <h1 className='text-2xl text-yellow-700'>{name}----------</h1>
-                <p className='text-l text-yellow-400'>{recipe}</p>
+          <img
+            src={item.image}
+            alt={item.title}
+            className="mx-auto w-full hover:scale-105 transition-all duration-300"
+          />
+          <div className="mt-4 px-4">
+            <h4 className="text-base font-semibold mb-2">{name}</h4>
+
+            <div className="flex justify-between">
+              <p className="text-black/50">{category}</p>
+              <p className="font-semibold">${price}</p>
             </div>
-            <h1 className='text-2xl text-yellow-700'> ${price}</h1>
+          </div>
         </div>
-             
-        </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Menuitem;

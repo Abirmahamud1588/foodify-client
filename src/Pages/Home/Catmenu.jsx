@@ -1,56 +1,76 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
-import slide1 from '../../assets/home/slide1.jpg'
-import slide2 from '../../assets/home/slide2.jpg'
-import slide3 from '../../assets/home/slide3.jpg'
-import slide4 from '../../assets/home/slide4.jpg'
-import slide5 from '../../assets/home/slide5.jpg'
-import Sectiontitle from '../../Componetnts/Sectiontitle';
+const companyLogo = [
+  { id: 1, img: "/images/company/brand1.png" },
+  { id: 2, img: "/images/company/brand2.png" },
+  { id: 3, img: "/images/company/brand3.png" },
+  { id: 4, img: "/images/company/brand4.png" },
+];
 
 const Catmenu = () => {
-    return (
+  return (
+    <div className="max-w-screen-2xl container xl:px-28 px-4 ">
+      {/* brand logo */}
+      <div className="flex items-center justify-around flex-wrap gap-4 py-10">
+        {companyLogo.map(({ id, img }) => (
+          <div key={id}>
+            <img src={img} alt="" />
+          </div>
+        ))}
+      </div>
+
+      {/* category grid */}
+      <div className="flex flex-col md:flex-row items-center gap-4 mt-8">
+        <p className="font-semibold md:-rotate-90 uppercase text-center bg-black text-white md:p-1.5 p-2 rounded-sm inline-flex">
+          Explore new and popular styles
+        </p>
         <div>
-            <section>
-                <Sectiontitle  subheading={'Starts From 9.00 Am'} heading={'ORDER NOW'} ></Sectiontitle>
-            <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper m-14"
-      >
-        <SwiperSlide><img src={slide1} alt="" />
-        <h1 className='text-orange-500 text-2xl font-semibold -mt-12 text-center'>Salad</h1>
-        </SwiperSlide>
-        <SwiperSlide><img src={slide2} alt="" />
-        <h1 className='text-orange-500 text-2xl font-semibold -mt-12 text-center'>Tomato</h1>
-
-        </SwiperSlide>
-        <SwiperSlide><img src={slide3} alt="" />
-                <h1 className='text-orange-500 text-2xl font-semibold -mt-12 text-center'>Coffee</h1>
-
-        </SwiperSlide>
-        <SwiperSlide><img src={slide4} alt="" />
-                <h1 className='text-orange-500 text-2xl font-semibold -mt-12 text-center'>Vegetable</h1>
-
-        </SwiperSlide>
-        <SwiperSlide><img src={slide5} alt="" />
-                <h1 className='text-orange-500 text-2xl font-semibold -mt-12 text-center'>Desert</h1>
-
-        </SwiperSlide>
-      \
-      </Swiper> 
-            </section>
+          <Link to="/">
+            <img
+              src="/images/category/image1.png"
+              alt=""
+              className="w-full hover:scale-105 transition-all duration-200"
+            />
+          </Link>
         </div>
-    );
+        <div className="md:w-1/2">
+          <div className="grid grid-cols-2 gap-2">
+            <Link to="/">
+              <img
+                src="/images/category/image2.png"
+                alt=""
+                className="hover:scale-105 transition-all duration-200"
+              />
+            </Link>
+            <Link to="/">
+              <img
+                src="/images/category/image3.png"
+                alt=""
+                className="hover:scale-105 transition-all duration-200"
+              />
+            </Link>
+            <Link to="/">
+              <img
+                src="/images/category/image4.png"
+                alt=""
+                className="hover:scale-105 transition-all duration-200"
+              />
+            </Link>
+            <Link to="/">
+              <img
+                src="/images/category/image5.png"
+                alt=""
+                className="hover:scale-105 transition-all duration-200"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Catmenu;

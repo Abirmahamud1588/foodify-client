@@ -3,17 +3,26 @@ import { AuthContext } from "../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useCart from "../Hook/useCart";
+import { FaCartPlus } from "react-icons/fa6";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 const Card = ({ item }) => {
-  const { image, price, name, recipe, _id } = item;
+  const { image, price, name, des, _id } = item;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [, refetch] = useCart();
 
   const handleAddToCart = (item) => {
     if (user) {
-      const cartItem = { menuItem: _id, name, image, price, email: user.email };
-      fetch("https://newrestaurant-ten.vercel.app/carts", {
+      const cartItem = {
+        menuItem: _id,
+        name,
+        image,
+        price,
+        email: user.email,
+        quantity: 1,
+      };
+      fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -24,7 +33,7 @@ const Card = ({ item }) => {
         .then((data) => {
           if (data.insertedId) {
             refetch(); //refetch cart to update the number of carts
-            Swal.fire("Food Added In The Cart", "success");
+            Swal.fire("Product Added In The Cart", "success");
           }
         });
     } else {
@@ -46,21 +55,25 @@ const Card = ({ item }) => {
 
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl mt-6">
+      <div className="card w-96 bg-base-100 shadow-sm mt-6">
         <div className="card-body items-center text-center">
-          <img src={image} />
+          <img
+            className="hover:scale-125 transition-transform duration-300"
+            src={image}
+          />
 
-          <h2 className="card-title text-2xl text-yellow-700">{name}!</h2>
-          <p className="text-xl text-orange-400 ">{recipe}</p>
-          <h3 className="text-2xl text-yellow-700 bg-slate-900 absolute right-0 p-2 mx-3">
-            {price}
+          <h2 className="card-title text-base font-semibold mb-2 mt-3">
+            {name} <FaArrowAltCircleRight></FaArrowAltCircleRight>
+          </h2>
+          <h3 className="text-2xl text-white bg-black absolute right-0 p-2 mx-3">
+            $ {price}
           </h3>
           <div className="card-actions">
             <button
               onClick={() => handleAddToCart(item)}
-              className="btn btn-outline bg-slate-200 border-0 border-b-4 mt-4 border-orange-400
-"
+              className="bg-black text-white px-6 py-2 font-semibold flex gap-2 items-center rounded-sm"
             >
+              <FaCartPlus></FaCartPlus>
               Add To Cart
             </button>
           </div>

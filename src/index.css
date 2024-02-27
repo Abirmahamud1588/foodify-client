@@ -1,3 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-tabs__tab--selected {
+  background: #141414 !important;
+  border-color: #aaa;
+  color: white !important;
+  border-radius: 5px 5px 0 0;
+  font-weight: 500;
+  font-size: 22px !important;
+  padding: 6px 40px !important;
+}
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 40px !important;
+  cursor: pointer;
+  font-size: 22px !important;
+}

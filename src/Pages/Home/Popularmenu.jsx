@@ -5,10 +5,12 @@ import Menuitem from "../../Shared/Menuitem/Menuitem";
 const Popularmenu = () => {
   const [menu, setMenu] = useState([]);
   useEffect(() => {
-    fetch("https://newrestaurant-ten.vercel.app/menu")
+    fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((data) => {
-        const populatitem = data.filter((item) => item.category === "popular");
+        const populatitem = data.filter(
+          (item) => item.status === "Best Selers"
+        );
         setMenu(populatitem);
       });
   }, []);

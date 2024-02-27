@@ -4,6 +4,7 @@ import { FaTrashAlt, FaUserAlt } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Swal from "sweetalert2";
 const Users = () => {
   const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -11,7 +12,7 @@ const Users = () => {
     return res.data;
   });
   const handlemakeadmin = (user) => {
-    fetch(`https://newrestaurant-ten.vercel.app/users/admin/${user._id}`, {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -27,11 +28,34 @@ const Users = () => {
       });
   };
 
-  // const handledeleteuser = (user) => {};
+  const handledeleteuser = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/users/${user._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your user has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="w-full ml-16 mt-16 h-full ">
-        <div className="flex justify-evenly bg-slate-500 py-4  items-center w-full">
+        <div className="flex justify-evenly bg-black py-4  items-center w-full">
           <h1 className="text-2xl text-white font-medium">
             Total users: {users.length}
           </h1>
@@ -40,7 +64,7 @@ const Users = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="text-xl">
+              <tr className="text-xl text-black">
                 <th className="text-xl">SN</th>
                 <th className="text-xl">Name</th>
                 <th className="text-xl"> Email</th>
@@ -79,7 +103,7 @@ const Users = () => {
                   </td>
                   <td>
                     <button
-                      // onClick={() => handledeleteuser(user)}
+                      onClick={() => handledeleteuser(user)}
                       className="btn bg-slate-900 text-white hover:text-red-700 btn-md"
                     >
                       <FaTrashAlt></FaTrashAlt>

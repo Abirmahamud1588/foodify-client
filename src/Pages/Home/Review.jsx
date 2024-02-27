@@ -12,7 +12,7 @@ import "@smastrom/react-rating/style.css";
 const Review = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
-    fetch("https://newrestaurant-ten.vercel.app/reviews")
+    fetch("http://localhost:5000/reviews")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);
@@ -29,16 +29,14 @@ const Review = () => {
       >
         {review.map((review) => (
           <SwiperSlide key={review._id}>
-            <div className="flex flex-col items-center gap-4 m-10 p-10 bg-slate-900">
+            <div className="flex flex-col items-center gap-4 m-10 p-10 bg-black">
               <Rating
                 style={{ maxWidth: 180 }}
                 value={review.rating}
                 readOnly
               />
               <p className="text-center my-6 text-white">{review.details}</p>
-              <h1 className="text-3xl font-bold text-orange-600">
-                {review.name}
-              </h1>
+              <h1 className="text-3xl font-bold text-white">{review.name}</h1>
             </div>
           </SwiperSlide>
         ))}

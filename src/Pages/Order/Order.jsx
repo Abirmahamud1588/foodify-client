@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Cover from "../../Shared/Cover/Cover";
-import img from "../../assets/shop/banner2.jpg";
+import img from "/banner2.jpg";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenu from "../../Hook/useMenu";
@@ -8,73 +8,51 @@ import Card from "../../Componetnts/Card";
 import Tabpanel from "./Tabpanel";
 import { useParams } from "react-router-dom";
 const Order = () => {
-  const categories = [
-    "salad",
-    "dessert",
-    "drinks",
-    "pizza",
-    "soup",
-    "Desi",
-    "offered",
-  ];
+  const categories = ["Dress", "Glasses", "Hoodies", "Shoe", "Bag"];
   const { category } = useParams();
   const intedinit = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(intedinit);
   const [menu] = useMenu();
 
-  const salaad = menu.filter((item) => item.category === "salad");
-  const dessert = menu.filter((item) => item.category === "dessert");
-  const drinks = menu.filter((item) => item.category === "drinks");
-  const pizza = menu.filter((item) => item.category === "pizza");
-  const offered = menu.filter((item) => item.category === "offered");
-  const soup = menu.filter((item) => item.category === "soup");
-  const Desi = menu.filter((item) => item.category === "Desi");
+  const Dress = menu.filter((item) => item.category === "Dress");
+  const Glasses = menu.filter((item) => item.category === "Glasses");
+  const Hoodies = menu.filter((item) => item.category === "Hoodies");
+  const Shoe = menu.filter((item) => item.category === "Shoe");
+  const Bag = menu.filter((item) => item.category === "Bag");
 
   return (
     <div>
-      <Cover
-        bgimg={img}
-        coverdetails={"You can Buy Your favourite Order!"}
-        coverheading={"Order Now"}
-      ></Cover>
-      <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <TabList>
-          <Tab>salaad</Tab>
-          <Tab>dessert</Tab>
-          <Tab>drinks</Tab>
-          <Tab>pizza</Tab>
-          <Tab>soup</Tab>
-          <Tab>Desi</Tab>
-          <Tab>Offered</Tab>
-        </TabList>
-        <TabPanel>
-          <Tabpanel item={salaad}></Tabpanel>
-        </TabPanel>
+      <Cover bgimg={img} coverdetails={""} coverheading={" "}></Cover>
+      <div className="max-w-screen-xl mx-auto">
+        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+          <TabList>
+            <Tab>Dress</Tab>
+            <Tab>Glass</Tab>
+            <Tab>Hoodies</Tab>
+            <Tab>Shoe</Tab>
+            <Tab>Bag</Tab>
+          </TabList>
+          <TabPanel>
+            <Tabpanel item={Dress}></Tabpanel>
+          </TabPanel>
 
-        <TabPanel>
-          <Tabpanel item={dessert}></Tabpanel>
-        </TabPanel>
+          <TabPanel>
+            <Tabpanel item={Glasses}></Tabpanel>
+          </TabPanel>
 
-        <TabPanel>
-          <Tabpanel item={drinks}></Tabpanel>
-        </TabPanel>
+          <TabPanel>
+            <Tabpanel item={Hoodies}></Tabpanel>
+          </TabPanel>
 
-        <TabPanel>
-          <Tabpanel item={pizza}></Tabpanel>
-        </TabPanel>
+          <TabPanel>
+            <Tabpanel item={Shoe}></Tabpanel>
+          </TabPanel>
 
-        <TabPanel>
-          <Tabpanel item={soup}></Tabpanel>
-        </TabPanel>
-
-        <TabPanel>
-          <Tabpanel item={Desi}></Tabpanel>
-        </TabPanel>
-
-        <TabPanel>
-          <Tabpanel item={offered}></Tabpanel>
-        </TabPanel>
-      </Tabs>
+          <TabPanel>
+            <Tabpanel item={Bag}></Tabpanel>
+          </TabPanel>
+        </Tabs>
+      </div>
     </div>
   );
 };

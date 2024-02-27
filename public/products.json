@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "name": "Adicolor Classics Joggers",
+    "category": "Dress",
+    "price": 63.85,
+    "image": "/images/products/image1.png",
+    "status": "Best Selers"
+  },
+  {
+    "id": 2,
+    "name": "Nike Sportswear Futura Luxe",
+    "category": "Bag",
+    "price": 130.0,
+    "image": "/images/products/image2.png",
+    "status": "Best Selers"
+  },
+  {
+    "id": 3,
+    "name": "Geometric print Scarf",
+    "category": "Dress",
+    "price": 53.0,
+    "image": "/images/products/image3.png",
+    "status": "Best Selers"
+  },
+  {
+    "id": 4,
+    "name": "Yellow Reserved Hoodie",
+    "category": "Hoodies",
+    "price": 63.85,
+    "image": "/images/products/image4.png",
+    "status": "New Arriaval"
+  },
+  {
+    "id": 5,
+    "name": "Basic Dress Green",
+    "category": "Dress",
+    "price": 236.0,
+    "image": "/images/products/image5.png",
+    "status": "New Arriaval"
+  },
+  {
+    "id": 6,
+    "name": "Nike Air Zoom Pegasus",
+    "category": "Shoe",
+    "price": 198.0,
+    "image": "/images/products/image6.png",
+    "status": "Best Selers"
+  },
+  {
+    "id": 7,
+    "name": "Nike Repel Miler",
+    "category": "Hoodies",
+    "price": 120.5,
+    "image": "/images/products/image7.png",
+    "status": "Best Selers"
+  },
+  {
+    "id": 8,
+    "name": "Nike Sportswear Futura Luxe",
+    "category": "Glasses",
+    "price": 160.0,
+    "image": "/images/products/image8.png",
+    "des": "Hand cut and sewn locally"
+  },
+  {
+    "id": 11,
+    "name": "Adicolor Classics Joggers",
+    "category": "Dress",
+    "price": 63.85,
+    "image": "/images/products/image1.png",
+    "status": "Best Selers",
+    "des": "Hand cut and sewn locally"
+  },
+  {
+    "id": 18,
+    "name": "Nike Sportswear Futura Luxe",
+    "category": "Glasses",
+    "price": 160.0,
+    "image": "/images/products/image8.png"
+  },
+  {
+    "id": 17,
+    "name": "Nike Repel Miler",
+    "category": "Hoodies",
+    "price": 120.5,
+    "image": "/images/products/image7.png",
+    "status": "Best Selers",
+    "des": "Hand cut and sewn locally"
+  }
+]

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+const image_hosting_token = "0adf7ebcf7f8a6597225ab37aeb9430f";
 
 const Additem = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -26,12 +26,12 @@ const Additem = () => {
       .then((imgResponse) => {
         if (imgResponse.success) {
           const imgUrl = imgResponse.data.display_url;
-          const { name, price, category, recipe } = data;
+          const { name, price, category, des } = data;
           const newItem = {
             name,
             price: parseFloat(price),
             category,
-            recipe,
+            des,
             image: imgUrl,
           };
           console.log(newItem);
@@ -54,7 +54,7 @@ const Additem = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full mb-4">
           <label className="label">
-            <span className="label-text font-semibold">Recipe Name*</span>
+            <span className="label-text font-semibold">Product Name*</span>
           </label>
           <input
             type="text"
@@ -74,12 +74,11 @@ const Additem = () => {
               className="select select-bordered"
             >
               <option disabled>Pick One</option>
-              <option>Pizza</option>
-              <option>Soup</option>
-              <option>Salad</option>
-              <option>Dessert</option>
-              <option>Desi</option>
-              <option>Drinks</option>
+              <option>Dress</option>
+              <option>Shoe</option>
+              <option>Bag</option>
+              <option>Glass</option>
+              <option>Hoodies</option>
             </select>
           </div>
           <div className="form-control w-full ml-4">
@@ -96,7 +95,7 @@ const Additem = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Recipe Details</span>
+            <span className="label-text">Description Details</span>
           </label>
           <textarea
             className="textarea textarea-bordered h-24"

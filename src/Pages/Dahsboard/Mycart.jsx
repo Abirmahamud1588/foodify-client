@@ -3,11 +3,41 @@ import useCart from "../../Hook/useCart";
 import { FaShoppingCart, FaCalendar, FaHome, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
+const calprice = (item) => {
+  return item.price * item.quantity;
+};
 const Mycart = () => {
   const [cart, refetch] = useCart();
   const { image, price, name } = cart;
   const totalprice = cart.reduce((sum, item) => item.price + sum, 0);
+
+  const handleQuantityChange = (index, action) => {
+    const updatedCart = [...cart];
+    const item = updatedCart[index];
+    if (action === "increment") {
+      item.quantity += 1;
+      refetch();
+    } else if (action === "decrement" && item.quantity > 1) {
+      item.quantity -= 1;
+      refetch();
+    }
+    // Update the price based on quantity
+
+    // Update the cart in the backend
+    fetch(`http://localhost:5000/carts/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+  };
+  const calculateTotalPrice = () => {
+    return cart
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
+  };
+
   const handleDelete = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -19,9 +49,8 @@ const Mycart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://newrestaurant-ten.vercel.app/${item._id}`, {
-          // Corrected URL and method name
-          method: "DELETE", // Corrected method name
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
@@ -36,12 +65,12 @@ const Mycart = () => {
 
   return (
     <div className="w-full ml-16 mt-16 h-full ">
-      <div className="flex justify-evenly bg-slate-500 py-4  items-center w-full">
+      <div className="flex justify-evenly bg-black py-4  items-center w-full">
         <h1 className="text-2xl text-white font-medium">
           Total Order: {cart.length}
         </h1>
         <h1 className="text-2xl text-white font-medium">
-          Total Price: ${totalprice}
+          Total Prices: ${calculateTotalPrice()}
         </h1>
         <Link to="/dashboard/payment">
           {" "}
@@ -54,8 +83,10 @@ const Mycart = () => {
           <thead>
             <tr className="text-xl">
               <th className="text-xl">SN</th>
-              <th className="text-xl">Food</th>
+              <th className="text-xl">Product</th>
               <th className="text-xl">Item Name</th>
+              <th className="text-xl"> Quantity</th>
+
               <th className="text-xl">Price</th>
               <th className="text-xl">Action</th>
             </tr>
@@ -82,7 +113,27 @@ const Mycart = () => {
                     {item.name}
                   </span>
                 </td>
-                <td className="text-center">{item.price}</td>
+                <td>
+                  <button
+                    className="btn btn-xs"
+                    onClick={() => handleQuantityChange(index, "decrement")}
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    className="w-10 overflow-hidden text-center"
+                    readOnly
+                  />
+                  <button
+                    className="btn btn-xs"
+                    onClick={() => handleQuantityChange(index, "increment")}
+                  >
+                    +
+                  </button>
+                </td>
+                <td>${calprice(item)}</td>
                 <th>
                   <button
                     onClick={() => handleDelete(item)}

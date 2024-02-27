@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import Ourmenu from "../Pages/Our Menu/Ourmenu";
+import Ourmenu from "../Pages/Our Shop/Shop";
 import Order from "../Pages/Order/Order";
 import Login from "../Pages/Login/Login";
 import Sign from "../Pages/Sign/Sign";
@@ -15,6 +15,9 @@ import ManageItems from "../Pages/Dahsboard/ManageItems";
 import Payment from "../Pages/Dahsboard/Payment";
 import Adminhome from "../Pages/Dahsboard/Adminhome";
 import Userhome from "../Pages/Dahsboard/Userhome";
+import Shop from "../Pages/Our Shop/Shop";
+import Myhistory from "../Pages/Dahsboard/Myhistory";
+import Orderhistory from "../Pages/Dahsboard/Orderhistory";
 
 export const router = createBrowserRouter([
   {
@@ -26,8 +29,8 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/menu",
-        element: <Ourmenu></Ourmenu>,
+        path: "/shop",
+        element: <Shop></Shop>,
       },
       {
         path: "/order/:category",
@@ -90,6 +93,14 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment></Payment>,
+      },
+      {
+        path: "history",
+        element: <Myhistory></Myhistory>,
+      },
+      {
+        path: "orderhistory",
+        element: <Orderhistory></Orderhistory>,
       },
     ],
   },

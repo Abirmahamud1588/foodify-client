@@ -1,6 +1,16 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaCalendar, FaHome, FaWallet } from "react-icons/fa";
+import {
+  FaShoppingCart,
+  FaCalendar,
+  FaHome,
+  FaWallet,
+  FaShoppingBag,
+  FaUser,
+  FaUserAlt,
+  FaOpenid,
+  FaPlusSquare,
+} from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../providers/AuthProviders";
 import useAdmin from "../Hook/useAdmin";
@@ -26,7 +36,7 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           {isAdmin ? (
             <>
-              <ul className="menu p-4 w-80 h-full bg-slate-500 text-base-content text-white">
+              <ul className="menu p-4 w-80 h-full bg-black text-base-content text-white">
                 <li>
                   <Link to="/dashboard/adminhome">
                     <FaHome></FaHome> Admin Home
@@ -34,29 +44,26 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link to="/dashboard/additem">
-                    <FaHome></FaHome> Add Item
+                    <FaPlusSquare></FaPlusSquare> Add Item
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard/manageitem">
-                    <FaHome></FaHome> Manage Item
+                    <FaOpenid></FaOpenid> Manage Item
                   </Link>
                 </li>
+
                 <li>
-                  <Link>
-                    <FaCalendar></FaCalendar> Reservation
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <FaWallet></FaWallet> Payment History
+                  <Link to="/dashboard/history">
+                    <FaWallet></FaWallet> Order History
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard/users">
-                    <FaShoppingCart></FaShoppingCart> All Users
+                    <FaUserAlt></FaUserAlt> All Users
                   </Link>
                 </li>
+
                 <div className="divider"></div>
 
                 <li>
@@ -65,15 +72,11 @@ const Dashboard = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/menu">
-                    <FaCalendar></FaCalendar> Menu{" "}
+                  <Link to="/shop">
+                    <FaShoppingBag></FaShoppingBag> Shop{" "}
                   </Link>
                 </li>
-                <li>
-                  <Link to="/order/salad">
-                    <FaWallet></FaWallet> Payment History{" "}
-                  </Link>
-                </li>
+
                 <li>
                   <Link to="/dashboard/mycart">
                     <FaShoppingCart></FaShoppingCart> My Cart{" "}
@@ -83,53 +86,28 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <ul className="menu p-4 w-80 h-full bg-slate-500 text-base-content text-white">
+              <ul className="menu p-4 w-80 h-full bg-black text-base-content text-white">
                 <li>
                   <Link to="/dashboard/userhome">
                     <FaHome></FaHome> User Home{" "}
                   </Link>
                 </li>
-                <li>
-                  <Link>
-                    <FaCalendar></FaCalendar> Reservation{" "}
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <FaWallet></FaWallet> Payment History
-                  </Link>
-                </li>
+
                 <li>
                   <Link to="/dashboard/mycart">
                     <FaShoppingCart></FaShoppingCart> My Cart
                   </Link>
                 </li>
-                <div className="divider"></div>
 
                 <li>
                   <Link to="/">
                     <FaHome></FaHome> Home
                   </Link>
                 </li>
+
                 <li>
-                  {" "}
-                  <Link to="/menu">
-                    {" "}
-                    <FaCalendar></FaCalendar> Menu{" "}
-                  </Link>
-                </li>
-                <li>
-                  {" "}
-                  <Link to="/order/salad">
-                    {" "}
-                    <FaWallet></FaWallet> Payment History{" "}
-                  </Link>
-                </li>
-                <li>
-                  {" "}
-                  <Link>
-                    {" "}
-                    <FaShoppingCart></FaShoppingCart> My Cart{" "}
+                  <Link to="/dashboard/history">
+                    <FaWallet></FaWallet> Order History
                   </Link>
                 </li>
               </ul>
